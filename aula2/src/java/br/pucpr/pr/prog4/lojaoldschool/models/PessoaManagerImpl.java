@@ -5,15 +5,15 @@
  */
 package br.pucpr.pr.prog4.lojaoldschool.models;
 
-import java.util.List;
-
 /**
  *
  * @author alexandre.hauffe
  */
-public interface IProdutoManager {
-    
-    List<Produto> obterTodos();
+public class PessoaManagerImpl implements PessoaManager{
 
-    Produto obterPorId(int id);
+    @Override
+    public Pessoa cadastrar(Pessoa p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }    
+    
 }

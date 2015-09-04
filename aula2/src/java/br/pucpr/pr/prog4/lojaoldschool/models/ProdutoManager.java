@@ -48,4 +48,13 @@ public class ProdutoManager implements IProdutoManager{
         return produtos;
     }
 
+    @Override
+    public Produto obterPorId(int id) {
+        for(Produto produto : produtos){
+            if(produto.getId() == id)
+                return produto;
+        }
+        return null;
+    }
+
 }

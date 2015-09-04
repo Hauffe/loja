@@ -5,15 +5,12 @@
  */
 package br.pucpr.pr.prog4.lojaoldschool.models;
 
-import java.util.List;
-
 /**
  *
  * @author alexandre.hauffe
  */
-public interface IProdutoManager {
+public interface PessoaManager {
     
-    List<Produto> obterTodos();
-
-    Produto obterPorId(int id);
+    Pessoa cadastrar(Pessoa p);
+    
 }
