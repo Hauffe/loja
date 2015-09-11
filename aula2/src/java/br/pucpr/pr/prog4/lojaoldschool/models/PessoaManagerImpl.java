@@ -5,6 +5,10 @@
  */
 package br.pucpr.pr.prog4.lojaoldschool.models;
 
+import br.pucpr.pr.prog4.lojaoldschool.models.dao.IDaoManager;
+import br.pucpr.pr.prog4.lojaoldschool.models.dao.IPessoaDao;
+import br.pucpr.pr.prog4.lojaoldschool.models.dao.JdbcDaoManager;
+
 /**
  *
  * @author alexandre.hauffe
@@ -12,8 +16,23 @@ package br.pucpr.pr.prog4.lojaoldschool.models;
 public class PessoaManagerImpl implements PessoaManager{
 
     @Override
-    public Pessoa cadastrar(Pessoa p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Pessoa cadastrar(Pessoa pessoa) {
+        IDaoManager maneger;
+        maneger = new JdbcDaoManager();
+        
+        try {
+            maneger.iniciar();
+            IPessoaDao dao = maneger.getPessoaDao();
+            Pessoa p;
+            p = dao.Inserir(pessoa);
+            maneger.confirmarTransação();
+            maneger.encerrar();
+            return p;
+        } catch (Exception e) {
+            maneger.abortarTransação();
+            throw e;
+        }
+        
     }    
     
 }

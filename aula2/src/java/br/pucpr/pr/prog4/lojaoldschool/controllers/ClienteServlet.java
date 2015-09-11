@@ -6,6 +6,8 @@
 package br.pucpr.pr.prog4.lojaoldschool.controllers;
 
 import br.pucpr.pr.prog4.lojaoldschool.models.Pessoa;
+import br.pucpr.pr.prog4.lojaoldschool.models.PessoaManager;
+import br.pucpr.pr.prog4.lojaoldschool.models.PessoaManagerImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -44,8 +46,7 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         
         Pessoa pessoa = new Pessoa();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");  
         pessoa.setTipo(request.getParameter("pessoa"));
         pessoa.setNome(request.getParameter("nome"));
         pessoa.setComentario(request.getParameter("comentario"));
@@ -58,6 +59,9 @@ public class ClienteServlet extends HttpServlet {
         }catch (ParseException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        PessoaManager manager = new PessoaManagerImpl();
+        manager.cadastrar(pessoa);
+        
         
     }
 

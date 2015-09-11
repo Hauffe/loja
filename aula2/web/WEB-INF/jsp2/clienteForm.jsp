@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="../style/estilo.css" rel="stylesheet" type="text/css"/>
         <script src="../plugins/jquery-2.1.4.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="http://www.geradorcpf.com/jquery.maskedinput-1.1.4.pack.js"/></script>
         <script type="text/javascript">
@@ -18,7 +19,7 @@
     </head>
     <body>
         <h1>Cadastro:</h1>
-        <div style="width: 195px;">
+        <div class="cadastro">
             <form action="cadastro" method="POST">
                 <label for="pessoa">Pessoa: </label>
                 <input type="radio" name="pessoa" value="fisica" />fisica <input type="radio" name="pessoa" value="juridica" />juridica
