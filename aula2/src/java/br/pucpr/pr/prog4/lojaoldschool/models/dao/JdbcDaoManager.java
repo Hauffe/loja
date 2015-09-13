@@ -27,8 +27,7 @@ public class JdbcDaoManager implements IDaoManager
             url = "jdbc:mysql://localhost:3306/loja";
             conexão = DriverManager.getConnection(url, "root", "");
             conexão.setAutoCommit(false);
-            //clienteDao.setConexão(conexão);
-            
+            pessoaDao.setConexão(conexão);
         }
         catch( Exception ex )
         {

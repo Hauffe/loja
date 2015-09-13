@@ -22,21 +22,26 @@ public class JdbcPessoaDao implements IPessoaDao{
         this.conexão = conexão;
     }
 
+    public void setConexão(Connection conexão) {
+        this.conexão = conexão;
+    }
+    
     @Override
     public Pessoa Inserir(Pessoa pessoa) {
-        String sql = "INSERT INTO pessoa"
-                + "('nome', 'tipo', 'comentario', 'sexo', 'CPF', 'data'"
-                + "VALUES"
+        
+        String sql = "INSERT INTO pessoa "
+                + "(pessoa, nome, comentario, cpf, sexo, data) "
+                + "VALUES "
                 + "(?, ?, ?, ?, ?, ?)";
         
         PreparedStatement ps;
         try {
             ps = conexão.prepareStatement(sql);
-            ps.setString(1, pessoa.getNome());
-            ps.setString(2, pessoa.getTipo());
+            ps.setString(1, pessoa.getTipo());
+            ps.setString(2, pessoa.getNome());
             ps.setString(3, pessoa.getComentario());
-            ps.setString(4, pessoa.getSexo());
-            ps.setString(5, pessoa.getCPF());
+            ps.setString(4, pessoa.getCPF());
+            ps.setString(5, pessoa.getSexo() + "");
             ps.setDate(6, new java.sql.Date(pessoa.getData().getTime()));
             
             ps.executeUpdate();
@@ -45,5 +50,6 @@ public class JdbcPessoaDao implements IPessoaDao{
             throw new DaoException("Erro no jdbc" + e.getMessage());
         }
     }
+
     
 }

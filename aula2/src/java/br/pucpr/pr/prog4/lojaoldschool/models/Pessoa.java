@@ -8,7 +8,8 @@ import java.util.Date;
  */
 public class Pessoa {
     
-    private String nome, tipo, comentario, sexo, CPF;
+    private String nome, tipo, comentario, CPF;
+    private Character sexo;
     private Integer id;
     private Date data;
 
@@ -60,11 +61,11 @@ public class Pessoa {
         this.data = data;
     }
 
-    public String getSexo() {
+    public Character getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
     

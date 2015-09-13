@@ -46,18 +46,18 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         
         Pessoa pessoa = new Pessoa();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");  
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
         pessoa.setTipo(request.getParameter("pessoa"));
         pessoa.setNome(request.getParameter("nome"));
         pessoa.setComentario(request.getParameter("comentario"));
         pessoa.setCPF(request.getParameter("cpf"));
-        pessoa.setSexo(request.getParameter("sexo"));
+        pessoa.setSexo(request.getParameter("sexo").charAt(0));
         
         try{
             Date dataNasc = sdf.parse(request.getParameter("datanasc"));
             pessoa.setData(dataNasc);
         }catch (ParseException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex.toString());
         }
         PessoaManager manager = new PessoaManagerImpl();
         manager.cadastrar(pessoa);
